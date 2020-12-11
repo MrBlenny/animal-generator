@@ -19,6 +19,18 @@ const Logo = styled.img`
   left: 30px;
   top: 30px;
   width: 400px;
+  
+`
+
+const Links = styled(Box)`
+  position: absolute;
+  right: 0px;
+  top: 30px;
+  a {
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+  }
 `
 
 
@@ -29,9 +41,10 @@ export default function Layout({ children, home }) {
       style={{
         height: "100%",
         backgroundImage: `url("/images/watermelon.png")`,
-        backgroundRepeat: 'no-repeat',
+        backgroundRepeat: 'repeat-x',
         backgroundPosition: "bottom",
-        backgroundSize: "100%"
+        backgroundSize: "100%",
+        backgroundSize: "auto 150px",
       }}
     >
       <Head>
@@ -51,6 +64,10 @@ export default function Layout({ children, home }) {
       </Head>
       <header>
         <Logo src="/images/logo.png" />
+        <Links direction="row" justify="end" pad="large" gap="large">
+          <a>about</a>
+          <a>request an animal</a>
+        </Links>
       </header>
       {children}
     </Grommet>

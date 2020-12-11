@@ -16,8 +16,8 @@ const animals = [{
 }]
 
 const Outer = styled(Box)`
-  width: 300px;
-  height: 400px;
+  width: 200px;
+  height: 300px;
   background: white;
   transition: 0.3s ease all;
 `
@@ -25,17 +25,36 @@ const Outer = styled(Box)`
 const ArrowButton = styled(Button)`
   width: 60px;
   margin: 20px 0;
+  transition: 0.3s ease all;
+  &:hover {
+    transform: translateY(-10px);
+  }
+`
+
+const ArrowButtonDown = styled(Button)`
+  width: 60px;
+  margin: 20px 0;
+  transition: 0.3s ease all;
+  &:hover {
+    transform: translateY(10px);
+  }
 `
 
 const Name = styled.div`
+  margin-top: 30px;
   font-size: 50px;
 `
 
 const BigButton = styled.a`
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+
   cursor: pointer;
   width: 500px;
   position: relative;
   margin-bottom: 50px;
+  transition: 0.3s ease all;
   &:hover {
     transform: translateY(-10px);
   }
@@ -48,22 +67,21 @@ const BigButton = styled.a`
     right: 0;
     bottom: 0;
   }
-  transition: 0.3s ease all;
 `
 
 function Swapper({ position, index, setIndex }) {
   const animal = animals[index % animals.length]
   return (
-    <Box align="center">
-      <ArrowButton onClick={() => setIndex(index => ++index)}>
+    <Box align="center" style={{ marginTop: '100px' }}>
+      <ArrowButton onClick={() => setIndex(index => index == animals.length - 1 ? 0 : index + 1)}>
         <img src={`/images/arrows/up${position}.png`} />
       </ArrowButton>
       <Outer align="center" justify="center" style={position == 2 ? { background: "#effbff" } : {}}>
         <img src={`/images/animals/${animal.name}-${position}.png`} />
       </Outer>
-      <ArrowButton onClick={() => setIndex(index => index == 0 ? animals.length : index - 1)}>
+      <ArrowButtonDown onClick={() => setIndex(index => index == 0 ? animals.length - 1 : index - 1)}>
         <img src={`/images/arrows/down${position}.png`} />
-      </ArrowButton>
+      </ArrowButtonDown>
     </Box>
   )
 }
