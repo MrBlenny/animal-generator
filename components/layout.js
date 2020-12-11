@@ -1,12 +1,9 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
 import styled from 'styled-components'
 import { Box, Grommet, grommet } from 'grommet'
 
-const name = '[Your Name]'
-export const siteTitle = 'Next.js Sample Website'
+export const name = 'Animal Generator'
+export const siteTitle = 'Animal Generator v1.0'
 
 const theme = {
   global: {
@@ -17,9 +14,16 @@ const theme = {
   },
 };
 
+const Logo = styled.img`
+  left: 30px;
+  top: 30px;
+  width: 400px;
+`
+
+
 export default function Layout({ children, home }) {
   return (
-    <Grommet theme={theme} background="lightgrey" style={{ height: "100%" }}>
+    <Grommet theme={theme} style={{ height: "100%" }}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
@@ -35,9 +39,10 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      <header>
+        <Logo src="/images/logo.png" />
       </header>
-      <main style={{ width: "100%", height: "100%" }}>{children}</main>
+      {children}
     </Grommet>
   )
 }

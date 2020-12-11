@@ -4,24 +4,24 @@ import { Box, Button } from 'grommet'
 import { useKey, useMount } from 'react-use';
 import { random } from 'lodash'
 
-const colors = ["red", "yellow", "pink", "green", "darkblue", "blue", "pink", "purple"]
+const animals = ["camel", "dog", "elephant"]
 
 const Outer = styled(Box)`
-  width: 600px;
+  width: 300px;
   height: 400px;
   background: red;
   transition: 0.3s ease all;
 `
 
-function Swapper({ type, index, setIndex }) {
-  const color = colors[index % colors.length]
+function Swapper({ position, index, setIndex }) {
+  const color = animals[index % animals.length]
   return (
-    <Box align="center" pad="small">
+    <Box align="center">
       <Button onClick={() => setIndex(index => ++index)}>/\</Button>
-      <Outer align="center" justify="center" style={{ background: color }} >
-        {type}
+      <Outer align="center" justify="center">
+        <img src={`/images/animals/${color}-${position}.png`} />
       </Outer>
-      <Button onClick={() => setIndex(index => index == 0 ? colors.length : index - 1)}>\/</Button>
+      <Button onClick={() => setIndex(index => index == 0 ? animals.length : index - 1)}>\/</Button>
     </Box>
   )
 }
@@ -32,9 +32,9 @@ export default function Swappers() {
   const [index3, setIndex3] = useState(0);
 
   const feelingUnlucky = () => {
-    setIndex1(random(0, colors.length))
-    setIndex2(random(0, colors.length))
-    setIndex3(random(0, colors.length))
+    setIndex1(random(0, animals.length))
+    setIndex2(random(0, animals.length))
+    setIndex3(random(0, animals.length))
   }
   useMount(() => feelingUnlucky())
 
@@ -42,9 +42,9 @@ export default function Swappers() {
 
     <Box align="center">
       <Box direction="row" justify="center" align="center" >
-        <Swapper index={index1} setIndex={setIndex1} />
-        <Swapper index={index2} setIndex={setIndex2} />
-        <Swapper index={index3} setIndex={setIndex3} />
+        <Swapper index={index1} setIndex={setIndex1} position="1" />
+        <Swapper index={index2} setIndex={setIndex2} position="2" />
+        <Swapper index={index3} setIndex={setIndex3} position="3" />
       </Box>
       <Button primary onClick={feelingUnlucky} style={{ padding: '20px' }}>I'm feeling unlucky</Button>
     </Box>
