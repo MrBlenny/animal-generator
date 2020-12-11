@@ -72,7 +72,7 @@ const BigButton = styled.a`
 function Swapper({ position, index, setIndex }) {
   const animal = animals[index % animals.length]
   return (
-    <Box align="center" style={{ marginTop: '100px' }}>
+    <Box align="center">
       <ArrowButton onClick={() => setIndex(index => index == animals.length - 1 ? 0 : index + 1)}>
         <img src={`/images/arrows/up${position}.png`} />
       </ArrowButton>
@@ -105,7 +105,7 @@ export default function Swappers() {
   return (
     <Box align="center" fill>
       <Box direction="column" justify="center" align="center" fill>
-        <Box direction="row" justify="center" align="center">
+        <Box direction="row" justify="center" align="center" style={{ marginTop: '120px' }}>
           <Swapper index={index1} setIndex={setIndex1} position="1" />
           <Swapper index={index2} setIndex={setIndex2} position="2" />
           <Swapper index={index3} setIndex={setIndex3} position="3" />
