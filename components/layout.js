@@ -85,7 +85,7 @@ export default function Layout({ children, home }) {
         {children}
       </Content>
       <Popup open={isAboutOpen} onClose={() => setIsAboutOpen(false)}>
-        Here is some about content
+        David is a butt in the best way possible!
       </Popup>
       <Popup open={isRequestOpen} onClose={() => setIsRequestOpen(false)}>
         Here is some request content
