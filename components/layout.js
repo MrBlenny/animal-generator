@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { Box, Grommet, grommet } from 'grommet'
+import Popup from './popup'
 
 export const name = 'Animal Generator'
 export const siteTitle = 'Animal Generator v1.0'
@@ -33,43 +35,56 @@ const Links = styled(Box)`
   }
 `
 
+const Content = styled(Box)`
+  transition: 0.1s ease filter;
+  background-image: url("/images/watermelon.png");
+  background-repeat: repeat-x;
+  background-position: bottom;
+  background-size: auto 200px;
+`
 
 export default function Layout({ children, home }) {
+  const [isAboutOpen, setIsAboutOpen] = useState(false)
+  const [isRequestOpen, setIsRequestOpen] = useState(false)
+  const isPopupOpen = isAboutOpen || isRequestOpen
   return (
     <Grommet
       theme={theme}
       style={{
         height: "100%",
-        backgroundImage: `url("/images/watermelon.png")`,
-        backgroundRepeat: 'repeat-x',
-        backgroundPosition: "bottom",
-        backgroundSize: "100%",
-        backgroundSize: "auto 150px",
       }}
     >
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="Learn how to build a personal website using Next.js"
-        />
-        <meta
-          property="og:image"
-          content={`https://og-image.now.sh/${encodeURI(
-            siteTitle
-          )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <header>
-        <Logo src="/images/logo.png" />
-        <Links direction="row" justify="end" pad="large" gap="large">
-          <a>about</a>
-          <a>request an animal</a>
-        </Links>
-      </header>
-      {children}
+      <Content fill style={isPopupOpen ? { filter: "blur(5px)" } : {}}>
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+          <meta
+            name="description"
+            content="Learn how to build a personal website using Next.js"
+          />
+          <meta
+            property="og:image"
+            content={`https://og-image.now.sh/${encodeURI(
+              siteTitle
+            )}.png?theme=light&md=0&fontSize=75px&images=https%3A%2F%2Fassets.zeit.co%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg`}
+          />
+          <meta name="og:title" content={siteTitle} />
+          <meta name="twitter:card" content="summary_large_image" />
+        </Head>
+        <header>
+          <Logo src="/images/logo.png" />
+          <Links direction="row" justify="end" pad="large" gap="large">
+            <a onClick={() => setIsAboutOpen(true)}>about</a>
+            <a onClick={() => setIsRequestOpen(true)}>request an animal</a>
+          </Links>
+        </header>
+        {children}
+      </Content>
+      <Popup open={isAboutOpen} onClose={() => setIsAboutOpen(false)}>
+        Here is some about content
+      </Popup>
+      <Popup open={isRequestOpen} onClose={() => setIsRequestOpen(false)}>
+        Here is some request content
+      </Popup>
     </Grommet>
   )
 }
