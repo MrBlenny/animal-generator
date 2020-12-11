@@ -92,7 +92,12 @@ From one punk to another,
 <3 Jess
       </Popup>
       <Popup open={isRequestOpen} onClose={() => setIsRequestOpen(false)}>
-        Here is some request content
+        We welcome your requests for the Christmas launch of
+the Ridiculous Animal Generator v2.0. 
+Please send your desired animals
+or any other suggestions to:
+
+ridiculousanimalgenerator@gmail.com
       </Popup>
     </Grommet>
   )
