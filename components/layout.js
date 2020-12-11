@@ -85,7 +85,11 @@ export default function Layout({ children, home }) {
         {children}
       </Content>
       <Popup open={isAboutOpen} onClose={() => setIsAboutOpen(false)}>
-        David is a butt in the best way possible!
+        This website was made to commemorate the 11th trip ‘round the sun for the most ridiculous person I know, Daniel. I hope it brings you hours of giggles and tongue-ties (maybe when I’ve added a few more animals). I love the heck out of you, and I’m infinitely proud of all of the cool things you’re doing (ridiculous or otherwise).
+
+From one punk to another,
+
+<3 Jess
       </Popup>
       <Popup open={isRequestOpen} onClose={() => setIsRequestOpen(false)}>
         Here is some request content
