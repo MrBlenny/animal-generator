@@ -6,8 +6,8 @@ import { random } from 'lodash'
 
 const animals = [{
   name: "dog",
-  divisions: ["dachsh", "hund"],
-  divisionsExp: ["da", "chsh", "hund"],
+  divisions: ["dach", "hund"],
+  divisionsExp: ["dach", "achshun", "hund"],
 }, {
   name: "worm",
   divisions: ["wor", "orm"],
@@ -15,7 +15,7 @@ const animals = [{
 }, {
   name: "elephant",
   divisions: ["eleph", "ant"],
-  divisionsExp: ["el", "eph", "ant"],
+  divisionsExp: ["el", "eleph", "phant"],
 }]
 
 const Outer = styled(Box)`
