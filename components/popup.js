@@ -19,7 +19,7 @@ const Inner = styled(Box)`
   background-repeat: no-repeat;
   padding: 60px;
   position: relative;
-
+  font-size: 18px;
 `
 
 const CloseButton = styled.a`

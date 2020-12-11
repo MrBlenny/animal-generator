@@ -44,7 +44,7 @@ const Content = styled(Box)`
   background-image: url("/images/watermelon.png");
   background-repeat: repeat-x;
   background-position: bottom;
-  background-size: auto 200px;
+  background-size: auto 160px;
 `
 
 export default function Layout({ children, home }) {
@@ -73,6 +73,7 @@ export default function Layout({ children, home }) {
           />
           <meta name="og:title" content={siteTitle} />
           <meta name="twitter:card" content="summary_large_image" />
+          <link rel="stylesheet" href="https://use.typekit.net/kuw5pxv.css"></link>
         </Head>
         <header>
           <Logo src="/images/logo.png" />

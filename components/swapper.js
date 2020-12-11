@@ -53,7 +53,7 @@ const BigButton = styled.a`
   cursor: pointer;
   width: 500px;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   transition: 0.3s ease all;
   &:hover {
     transform: translateY(-10px);
