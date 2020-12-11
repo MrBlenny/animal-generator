@@ -89,7 +89,7 @@ export default function Layout({ children, home }) {
 
 From one punk to another,
 
-<3 Jess
+Jess
       </Popup>
       <Popup open={isRequestOpen} onClose={() => setIsRequestOpen(false)}>
         We welcome your requests for the Christmas launch of
