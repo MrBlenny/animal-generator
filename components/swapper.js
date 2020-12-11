@@ -6,13 +6,16 @@ import { random } from 'lodash'
 
 const animals = [{
   name: "dog",
-  divisions: ["da", "chsh", "hund"]
+  divisions: ["dachsh", "hund"],
+  divisionsExp: ["da", "chsh", "hund"],
 }, {
   name: "camel",
-  divisions: ["ca", "me", "mel"]
+  divisions: ["came", "mel"],
+  divisionsExp: ["ca", "me", "mel"],
 }, {
   name: "elephant",
-  divisions: ["el", "eph", "ant"]
+  divisions: ["eleph", "ant"],
+  divisionsExp: ["el", "eph", "ant"],
 }]
 
 const Outer = styled(Box)`
@@ -99,7 +102,7 @@ export default function Swappers() {
   useMount(() => feelingUnlucky())
 
   const name = [animals[index1], animals[index2], animals[index3]]
-    .map((item, idx) => item.divisions[idx])
+    .map((item, idx) => item.divisionsExp[idx])
     .join('-')
 
   return (
