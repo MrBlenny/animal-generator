@@ -13,6 +13,10 @@ const animals = [{
   divisions: ["wor", "orm"],
   divisionsExp: ["wor", "worm", "orm"],
 }, {
+  name: "camel",
+  divisions: ["cam", "mel"],
+  divisionsExp: ["cam", "amel", "mel"],
+}, {
   name: "elephant",
   divisions: ["eleph", "ant"],
   divisionsExp: ["el", "eleph", "phant"],
