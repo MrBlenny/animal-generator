@@ -45,6 +45,9 @@ const Content = styled(Box)`
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: auto 160px;
+  &:focus {
+    outline: none;
+  }
 `
 
 export default function Layout({ children, home }) {
@@ -87,15 +90,15 @@ export default function Layout({ children, home }) {
       <Popup open={isAboutOpen} onClose={() => setIsAboutOpen(false)}>
         This website was made to commemorate the 11th trip ‘round the sun for the most ridiculous person I know, Daniel. I hope it brings you hours of giggles and tongue-ties (maybe when I’ve added a few more animals). I love the heck out of you, and I’m infinitely proud of all of the cool things you do (ridiculous or otherwise).
 
-From one punk to another,
+        From one punk to another,
 
-Jess
+        Jess
       </Popup>
       <Popup open={isRequestOpen} onClose={() => setIsRequestOpen(false)}>
         We welcome your requests for the Christmas 2020 launch of
-the Ridiculous Animal Generator v2.0. 
-Please send any suggestions via snail mail, morse code, carrier pigeon or (as a last resort) the email address below.
-ridiculousanimalgenerator@gmail.com
+        the Ridiculous Animal Generator v2.0.
+        Please send any suggestions via snail mail, morse code, carrier pigeon or (as a last resort) the email address below.
+        ridiculousanimalgenerator@gmail.com
       </Popup>
     </Grommet>
   )

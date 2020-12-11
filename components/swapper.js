@@ -17,7 +17,7 @@ const animals = [{
   divisions: ["cam", "mel"],
   divisionsExp: ["cam", "amel", "mel"],
 }, {
-   name: "echidna",
+  name: "echidna",
   divisions: ["echid", "idna"],
   divisionsExp: ["echid", "echidna", "idna"],
 }, {
@@ -31,6 +31,30 @@ const Outer = styled(Box)`
   height: 300px;
   background: white;
   transition: 0.3s ease all;
+`
+
+const SwapperOuter = styled(Box)`
+  transition: 0.3s ease all;
+  ${(props) => {
+    if (!props.expansion && props.position === "1") {
+      return `
+      transform: translate(50%);
+      `;
+    }
+    if (!props.expansion && props.position === "3") {
+      return `
+      transform: translate(-50%);
+      `;
+    }
+    if (!props.expansion && props.position === "2") {
+      return `
+      opacity: 0;
+      button {
+        opacity: 0;
+      }
+      `;
+    }
+  }}
 `
 
 const ArrowButton = styled(Button)`
@@ -80,10 +104,11 @@ const BigButton = styled.a`
   }
 `
 
-function Swapper({ position, index, setIndex }) {
+
+function Swapper({ position, index, setIndex, expansion }) {
   const animal = animals[index % animals.length]
   return (
-    <Box align="center">
+    <SwapperOuter align="center" expansion={expansion} position={position}>
       <ArrowButton onClick={() => setIndex(index => index == animals.length - 1 ? 0 : index + 1)}>
         <img src={`/images/arrows/up${position}.png`} />
       </ArrowButton>
@@ -93,7 +118,7 @@ function Swapper({ position, index, setIndex }) {
       <ArrowButtonDown onClick={() => setIndex(index => index == 0 ? animals.length - 1 : index - 1)}>
         <img src={`/images/arrows/down${position}.png`} />
       </ArrowButtonDown>
-    </Box>
+    </SwapperOuter>
   )
 }
 
@@ -101,6 +126,7 @@ export default function Swappers() {
   const [index1, setIndex1] = useState(0);
   const [index2, setIndex2] = useState(0);
   const [index3, setIndex3] = useState(0);
+  const [expansion, setExpansion] = useState(false)
 
   const feelingUnlucky = () => {
     setIndex1(random(0, animals.length - 1))
@@ -109,20 +135,25 @@ export default function Swappers() {
   }
   useMount(() => feelingUnlucky())
 
-  const name = [animals[index1], animals[index2], animals[index3]]
-    .map((item, idx) => item.divisionsExp[idx])
-    .join('-')
+  const name = expansion ?
+    [animals[index1], animals[index2], animals[index3]]
+      .map((item, idx) => item.divisionsExp[idx])
+      .join('-')
+    : [animals[index1], animals[index3]]
+      .map((item, idx) => item.divisions[idx])
+      .join('-')
 
   return (
     <Box align="center" fill>
       <Box direction="column" justify="center" align="center" fill>
         <Box direction="row" justify="center" align="center" style={{ marginTop: '120px' }}>
-          <Swapper index={index1} setIndex={setIndex1} position="1" />
-          <Swapper index={index2} setIndex={setIndex2} position="2" />
-          <Swapper index={index3} setIndex={setIndex3} position="3" />
+          <Swapper index={index1} setIndex={setIndex1} expansion={expansion} position="1" />
+          <Swapper index={index2} setIndex={setIndex2} expansion={expansion} position="2" />
+          <Swapper index={index3} setIndex={setIndex3} expansion={expansion} position="3" />
         </Box>
         <Name>{name}</Name>
       </Box>
+      <Button onClick={() => setExpansion(!expansion)}>Expansion</Button>
       <BigButton onClick={feelingUnlucky}>
         <img src="/images/button.png" />
         <Box align="center" justify="center">i'm feeling unlucky</Box>
