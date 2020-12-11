@@ -15,6 +15,7 @@ const theme = {
 };
 
 const Logo = styled.img`
+  position: absolute;
   left: 30px;
   top: 30px;
   width: 400px;
@@ -23,7 +24,16 @@ const Logo = styled.img`
 
 export default function Layout({ children, home }) {
   return (
-    <Grommet theme={theme} style={{ height: "100%" }}>
+    <Grommet
+      theme={theme}
+      style={{
+        height: "100%",
+        backgroundImage: `url("/images/watermelon.png")`,
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: "bottom",
+        backgroundSize: "100%"
+      }}
+    >
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <meta
