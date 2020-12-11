@@ -9,9 +9,9 @@ const animals = [{
   divisions: ["dachsh", "hund"],
   divisionsExp: ["da", "chsh", "hund"],
 }, {
-  name: "camel",
-  divisions: ["came", "mel"],
-  divisionsExp: ["ca", "me", "mel"],
+  name: "worm",
+  divisions: ["wor", "orm"],
+  divisionsExp: ["wor", "worm", "orm"],
 }, {
   name: "elephant",
   divisions: ["eleph", "ant"],
