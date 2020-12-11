@@ -21,6 +21,10 @@ const Logo = styled.img`
   left: 30px;
   top: 30px;
   width: 400px;
+  transition: 0.2s ease all;
+  &:hover {
+    transform: rotate(-4deg);
+  }
   
 `
 

@@ -23,12 +23,17 @@ const Inner = styled(Box)`
 `
 
 const CloseButton = styled.a`
+  cursor: pointer;
   width: 50px;
   height: 50px;
   margin-bottom: 20px;
   position: absolute;
   right: 0px;
   top: 0px;
+  transition: 0.2s ease all;
+  &:hover {
+    transform: rotate(15deg);
+  }
 `
 
 export default function Popup({ onClose, open, children }) {
