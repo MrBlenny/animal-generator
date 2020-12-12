@@ -1,1 +1,1 @@
-# http://ridiculousanimalgenerator.com
+![demo][./public/images/demo.png]
