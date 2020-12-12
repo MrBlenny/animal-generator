@@ -189,7 +189,7 @@ export default function Swappers() {
 
   let name = ''
   if (expansion) {
-    if (index1 === index2 === index3) {
+    if ((index1 === index2) && (index2 === index3)) {
       name = animals[index1].name
     } else if (index1 === index2) {
       name = [animals[index1], animals[index3]]
