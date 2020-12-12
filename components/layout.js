@@ -99,7 +99,7 @@ export default function Layout({ children, home }) {
         {children}
       </Content>
       <Popup open={isAboutOpen} onClose={() => setIsAboutOpen(false)}>
-        <p>This website was made to commemorate the 11th trip ‘round the sun for the most ridiculous person I know, Daniel.</p>
+        <p>This website was made to commemorate the 11th trip ‘round the sun of the most ridiculous person I know: Daniel.</p>
         <p>I hope it brings you hours of giggles and tongue-ties (maybe when I’ve added a few more animals).</p>
         <p>I love the heck out of you, and I’m infinitely proud of all of the cool things you do (ridiculous or otherwise).</p>
         <p>From one punk to another,</p>
