@@ -49,6 +49,7 @@ const SwapperOuter = styled(Box)`
     if (!props.expansion && props.position === "2") {
       return `
       opacity: 0;
+      transform: scale(0.5);
       button {
         opacity: 0;
       }
@@ -135,13 +136,24 @@ export default function Swappers() {
   }
   useMount(() => feelingUnlucky())
 
-  const name = expansion ?
-    [animals[index1], animals[index2], animals[index3]]
-      .map((item, idx) => item.divisionsExp[idx])
-      .join('-')
-    : [animals[index1], animals[index3]]
-      .map((item, idx) => item.divisions[idx])
-      .join('-')
+  let name = ''
+  if (expansion) {
+    if (index1 === index2 === index3) {
+      name = animals[index1].name
+    } else {
+      name = [animals[index1], animals[index2], animals[index3]]
+        .map((item, idx) => item.divisionsExp[idx])
+        .join('-')
+    }
+  } else if (!expansion) {
+    if (index1 === index3) {
+      name = animals[index1].name
+    } else {
+      name = [animals[index1], animals[index3]]
+        .map((item, idx) => item.divisions[idx])
+        .join('-')
+    }
+  }
 
   return (
     <Box align="center" fill>
@@ -153,7 +165,7 @@ export default function Swappers() {
         </Box>
         <Name>{name}</Name>
       </Box>
-      <Button onClick={() => setExpansion(!expansion)}>Expansion</Button>
+      <Button onClick={() => setExpansion(!expansion)}>{expansion ? "Remove expansion pack" : "Apply Expansion Pack"}</Button>
       <BigButton onClick={feelingUnlucky}>
         <img src="/images/button.png" />
         <Box align="center" justify="center">i'm feeling unlucky</Box>
