@@ -17,10 +17,15 @@ const Inner = styled(Box)`
   height: 450px;
   background-size: 100%;
   background-repeat: no-repeat;
-  padding: 80px;
+  padding: 160px 150px 150px;
   position: relative;
-  font-size: 24px;
-  line-height: 1.4em;
+  font-size: 16px;
+  line-height: 1.2em;
+  text-align: center;
+
+  p {
+    margin: 10px 0;
+  }
 `
 
 const CloseButton = styled.a`
@@ -42,7 +47,7 @@ export default function Popup({ onClose, open, children }) {
 
   return open && (
     <Outer fill justify="center" align="center">
-      <Inner>
+      <Inner align="center" justify="center">
         <CloseButton onClick={onClose}>
           <img src="/images/x.png" />
         </CloseButton>

@@ -20,7 +20,7 @@ const Logo = styled.img`
   position: absolute;
   left: 30px;
   top: 30px;
-  width: 400px;
+  width: 370px;
   transition: 0.2s ease all;
   &:hover {
     transform: rotate(-4deg);
@@ -36,6 +36,13 @@ const Links = styled(Box)`
     cursor: pointer;
     font-size: 20px;
     color: black;
+    padding: 10px;
+    border-bottom: 4px solid transparent;
+    transition: 0.2s ease all;
+    &:hover {
+      text-decoration: none;
+      border-bottom: 4px solid #ff0023;
+    }
   }
 `
 
@@ -44,9 +51,13 @@ const Content = styled(Box)`
   background-image: url("/images/watermelon.png");
   background-repeat: repeat-x;
   background-position: bottom;
-  background-size: auto 160px;
+  background-size: auto 180px;
   &:focus {
     outline: none;
+  }
+  button {
+    outline: none !important;
+    box-shadow: none !important;
   }
 `
 
@@ -80,7 +91,7 @@ export default function Layout({ children, home }) {
         </Head>
         <header>
           <Logo src="/images/logo.png" />
-          <Links direction="row" justify="end" pad="large" gap="large">
+          <Links direction="row" justify="end" gap="medium" style={{ paddingRight: '90px', paddingTop: "50px" }}>
             <a onClick={() => setIsAboutOpen(true)}>about</a>
             <a onClick={() => setIsRequestOpen(true)}>request an animal</a>
           </Links>
@@ -88,17 +99,18 @@ export default function Layout({ children, home }) {
         {children}
       </Content>
       <Popup open={isAboutOpen} onClose={() => setIsAboutOpen(false)}>
-        This website was made to commemorate the 11th trip ‘round the sun for the most ridiculous person I know, Daniel. I hope it brings you hours of giggles and tongue-ties (maybe when I’ve added a few more animals). I love the heck out of you, and I’m infinitely proud of all of the cool things you do (ridiculous or otherwise).
+        <p>This website was made to commemorate the 11th trip ‘round the sun for the most ridiculous person I know, Daniel.</p>
+        <p>I hope it brings you hours of giggles and tongue-ties (maybe when I’ve added a few more animals).</p>
+        <p>I love the heck out of you, and I’m infinitely proud of all of the cool things you do (ridiculous or otherwise).</p>
+        <p>From one punk to another,</p>
+        <img src="/images/lovejess.png" style={{ marginTop: "10px", width: "80px" }} />
+        <img src="/images/david.png" />
 
-        From one punk to another,
-
-        Jess
       </Popup>
       <Popup open={isRequestOpen} onClose={() => setIsRequestOpen(false)}>
-        We welcome your requests for the Christmas 2020 launch of
-        the Ridiculous Animal Generator v2.0.
-        Please send any suggestions via snail mail, morse code, carrier pigeon or (as a last resort) the email address below.
-        ridiculousanimalgenerator@gmail.com
+        <p>We welcome your requests for the Christmas 2020 launch of the Ridiculous Animal Generator v2.0.</p>
+        <p>Please send any suggestions via snail mail, morse code, carrier pigeon or (as a last resort) the email address below.</p>
+        <img src="/images/email.png" style={{ marginTop: "10px" }} />
       </Popup>
     </Grommet>
   )
