@@ -17,6 +17,10 @@ const animals = [{
   divisions: ["cam", "mel"],
   divisionsExp: ["cam", "amel", "mel"],
 }, {
+   name: "calf",
+  divisions: ["cal", "alf"],
+  divisionsExp: ["cal", "calf", "alf"],
+}, {
   name: "echidna",
   divisions: ["echid", "idna"],
   divisionsExp: ["echid", "echidna", "idna"],
