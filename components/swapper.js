@@ -5,7 +5,7 @@ import { useKey, useMount } from 'react-use';
 import { random } from 'lodash'
 
 const animals = [{
-  name: "dog",
+  name: "dachshund",
   divisions: ["dach", "hund"],
   divisionsExp: ["dach", "achshun", "hund"],
 }, {
