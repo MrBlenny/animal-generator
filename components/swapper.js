@@ -159,7 +159,7 @@ const Frame = styled.img`
 
 const ExpansionPack = styled.div`
   position: absolute;
-  right: 50px;
+  right: 70px;
   bottom: 140px;
   width: 200px;
 
