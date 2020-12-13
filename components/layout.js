@@ -32,6 +32,17 @@ const Links = styled(Box)`
   position: absolute;
   right: 0px;
   top: 30px;
+  padding-right: 90px;
+  padding-top: 50px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 50px;
+    padding-top: 100px;
+  }
+
   a {
     cursor: pointer;
     font-size: 20px;
@@ -39,6 +50,9 @@ const Links = styled(Box)`
     padding: 10px;
     border-bottom: 4px solid transparent;
     transition: 0.2s ease all;
+    @media (max-width: 768px) {
+      font-size: 26px;
+    }
     &:hover {
       text-decoration: none;
       border-bottom: 4px solid #ff0023;
@@ -52,6 +66,7 @@ const Content = styled(Box)`
   background-repeat: repeat-x;
   background-position: bottom;
   background-size: auto 180px;
+  touch-action: manipulation;
   &:focus {
     outline: none;
   }
@@ -92,7 +107,7 @@ export default function Layout({ children, home }) {
         </Head>
         <header>
           <Logo src="/images/logo.png" />
-          <Links direction="row" justify="end" gap="medium" style={{ paddingRight: '90px', paddingTop: "50px" }}>
+          <Links direction="row" justify="end" gap="medium">
             <a onClick={() => setIsAboutOpen(true)}>about</a>
             <a onClick={() => setIsRequestOpen(true)}>request an animal</a>
           </Links>

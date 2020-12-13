@@ -17,7 +17,7 @@ const animals = [{
   divisions: ["cam", "mel"],
   divisionsExp: ["cam", "amel", "mel"],
 }, {
-   name: "calf",
+  name: "calf",
   divisions: ["cal", "alf"],
   divisionsExp: ["cal", "calf", "alf"],
 }, {
@@ -62,6 +62,14 @@ const SwapperOuter = styled(Box)`
   }}
 `
 
+const SwapperContainer = styled(Box)`
+  margin-top: 160px;
+
+  @media (max-width: 768px) {
+    margin-top: 250px;
+  }
+`
+
 const ArrowButton = styled(Button)`
   width: 60px;
   margin: 10px 0;
@@ -90,22 +98,45 @@ const BigButton = styled.a`
   -khtml-user-select: none;
   -webkit-user-select: none;
 
+  @media (max-width: 768px) {
+    margin-bottom: 240px;
+  }
+
+
   cursor: pointer;
   width: 500px;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 180px;
   transition: 0.3s ease all;
+  .normal {
+    width: 100%;
+    top: 0;
+  }
+  .hover {
+    width: 100%;
+    top: 0;
+    display: none;
+  }
   &:hover {
-    transform: translateY(-10px);
+    div {
+      transform: translateY(10px);
+    }
+    .normal {
+      display: none;
+    }
+    .hover {
+      display: block;
+    }
+
   }
   div {
     color: black;
     font-size: 22px;
+    height: 80px;
     position: absolute;
-    top: 0;
+    top: 8px;
     left: 0;
     right: 0;
-    bottom: 5px;
   }
 `
 
@@ -128,10 +159,20 @@ const ExpansionPack = styled.div`
   right: 50px;
   bottom: 200px;
   width: 200px;
+
+  @media (max-width: 768px) {
+    right: 50%;
+    bottom: 130px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 `
 
 const Toggles = styled.div`
   cursor: pointer;
+  height: 60px;
   img {
     position: absolute;
     width: 100px;
@@ -221,16 +262,17 @@ export default function Swappers() {
   return (
     <Box align="center" fill>
       <Box direction="column" justify="center" align="center" fill>
-        <Box direction="row" justify="center" align="center" style={{ marginTop: '120px' }}>
+        <SwapperContainer direction="row" justify="center" align="center">
           <Swapper index={index1} setIndex={setIndex1} expansion={expansion} position="1" />
           <Swapper index={index2} setIndex={setIndex2} expansion={expansion} position="2" />
           <Swapper index={index3} setIndex={setIndex3} expansion={expansion} position="3" />
           <Frame src="/images/redboxlarge.png" expansion={expansion} />
-        </Box>
+        </SwapperContainer>
         <Name>{name}</Name>
       </Box>
       <BigButton onClick={feelingUnlucky}>
-        <img src="/images/button.png" />
+        <img class="normal" src="/images/button.png" />
+        <img class="hover" src="/images/button-hover.png" />
         <Box align="center" justify="center">i'm feeling unlucky</Box>
       </BigButton>
       <ExpansionPack>

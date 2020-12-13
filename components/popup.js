@@ -23,6 +23,11 @@ const Inner = styled(Box)`
   line-height: 1.2em;
   text-align: center;
 
+  @media (max-width: 768px) {
+    padding: 50px;
+    font-size: 20px;
+    height: 450px;
+  }
   p {
     margin: 10px 0;
   }
