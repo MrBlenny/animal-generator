@@ -89,7 +89,8 @@ const ArrowButtonDown = styled(Button)`
 `
 
 const Name = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
   font-size: 35px;
 `
 
@@ -104,16 +105,18 @@ const BigButton = styled.a`
 
 
   cursor: pointer;
-  width: 500px;
+  width: 500px;  
   position: relative;
-  margin-bottom: 180px;
+  margin-bottom: 150px;
   transition: 0.3s ease all;
   .normal {
     width: 100%;
+    height: 100px;
     top: 0;
   }
   .hover {
     width: 100%;
+    height: 100px;
     top: 0;
     display: none;
   }
@@ -157,7 +160,7 @@ const Frame = styled.img`
 const ExpansionPack = styled.div`
   position: absolute;
   right: 50px;
-  bottom: 200px;
+  bottom: 140px;
   width: 200px;
 
   @media (max-width: 768px) {
