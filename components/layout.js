@@ -22,6 +22,9 @@ const Logo = styled.img`
   top: 30px;
   width: 370px;
   transition: 0.2s ease all;
+  @media (max-width: 1280px) {
+    width: 250px;
+  }
   &:hover {
     transform: rotate(-4deg);
   }
@@ -48,14 +51,33 @@ const Links = styled(Box)`
     font-size: 20px;
     color: black;
     padding: 10px;
-    border-bottom: 4px solid transparent;
-    transition: 0.2s ease all;
+    position: relative;
+
     @media (max-width: 768px) {
       font-size: 26px;
     }
     &:hover {
       text-decoration: none;
-      border-bottom: 4px solid #ff0023;
+      ::after {
+        transform: translateY(5px);
+        opacity: 1;
+      }
+    }
+
+    ::after {
+      transition: 0.1s ease all;
+      content: '';
+      position: absolute;
+      opacity: 0;
+      background-image: url('/images/underline.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      transform: translateY(8px);
+      width: 100%;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      height: 6px;
     }
   }
 `
