@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 import { Box, Button } from 'grommet'
-import { useKey, useMount } from 'react-use';
+import { useMount } from 'react-use';
 import { random } from 'lodash'
+import useKonami from 'react-use-konami';
 
 const animals = [{
   name: "dachshund",
@@ -36,6 +37,10 @@ const animals = [{
   name: "elephant",
   divisions: ["eleph", "ant"],
   divisionsExp: ["el", "eleph", "phant"],
+}, {
+  name: "dan",
+  divisions: ["dan", "dan"],
+  divisionsExp: ["dan", "dan", "dan"],
 }]
 
 const Outer = styled(Box)`
@@ -215,17 +220,17 @@ const Toggles = styled.div`
   }}
 `
 
-function Swapper({ position, index, setIndex, expansion }) {
+function Swapper({ position, index, setIndex, expansion, dan }) {
   const animal = animals[index % animals.length]
   return (
     <SwapperOuter align="center" expansion={expansion} position={position}>
-      <ArrowButton onClick={() => setIndex(index => index == animals.length - 1 ? 0 : index + 1)}>
+      <ArrowButton onClick={() => setIndex(index => index == animals.length - 2 ? 0 : index + 1)}>
         <img src={`/images/arrows/up${position}.png`} />
       </ArrowButton>
       <Outer align="center" justify="center">
         <img src={`/images/animals/${animal.name}-${position}.png`} />
       </Outer>
-      <ArrowButtonDown onClick={() => setIndex(index => index == 0 ? animals.length - 1 : index - 1)}>
+      <ArrowButtonDown onClick={() => setIndex(index => index == 0 ? animals.length - 2 : index - 1)}>
         <img src={`/images/arrows/down${position}.png`} />
       </ArrowButtonDown>
     </SwapperOuter>
@@ -237,13 +242,20 @@ export default function Swappers() {
   const [index2, setIndex2] = useState(0);
   const [index3, setIndex3] = useState(0);
   const [expansion, setExpansion] = useState(false)
+  const [danMode, setDanMod] = useState(false)
 
   const feelingUnlucky = () => {
-    setIndex1(random(0, animals.length - 1))
-    setIndex2(random(0, animals.length - 1))
-    setIndex3(random(0, animals.length - 1))
+    setIndex1(random(0, animals.length - 2))
+    setIndex2(random(0, animals.length - 2))
+    setIndex3(random(0, animals.length - 2))
   }
   useMount(() => feelingUnlucky())
+
+  useKonami(() => {
+    setIndex3(animals.length - 1)
+  }, {
+    code: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'Enter'],
+  })
 
   let name = ''
   if (expansion) {
