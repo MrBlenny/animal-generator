@@ -164,7 +164,7 @@ const Frame = styled.img`
   transition: 0.3s ease all;
   ${props => {
     if (props.expansion) {
-      return "width: 655px;"
+      return "width: 660px;"
     } else {
       return "width: 445px;"
     }
