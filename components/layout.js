@@ -87,7 +87,7 @@ const Content = styled(Box)`
   background-image: url("/images/watermelon.png");
   background-repeat: repeat-x;
   background-position: bottom;
-  background-size: auto 180px;
+  background-size: auto 150px;
   touch-action: manipulation;
   &:focus {
     outline: none;
