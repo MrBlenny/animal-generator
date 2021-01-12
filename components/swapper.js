@@ -46,7 +46,7 @@ const animals = [{
 const Outer = styled(Box)`
   width: 200px;
   height: 300px;
-  background: rgb(176 222 163);
+  background: rgb(175 237 255);
   transition: 0.3s ease all;
 `
 
